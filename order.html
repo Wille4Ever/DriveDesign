@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DriveDesign</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Tilføj eventuel yderligere CSS-styling her */
+
+        /* Eksempel på en sektion med scroll-effekt */
+        .scroll-section {
+            overflow-y: scroll;
+            height: 400px;
+        }
+        
+        /* Eksempel på en sej baggrund */
+        body {
+            background-image: url("");
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* Juster synlighed af baggrundsbilledet */
+            background-position: 20% 80%;
+            opacity: 0.8; /* Juster gennemsigtigheden (0.0-1.0) */
+        }
+        
+        
+        /* Eksempel på hover-effekt på teksten */
+        h2:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+.smaller-image {
+  max-width: 300px; /* Adjust the width as desired */
+  height: auto;
+}
+
+.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+    </style>
+</head>
+<body>
+    <header class="bg-gray-800 text-white p-4">
+        <h1 class="text-2xl">DriveDesign</h1>
+        <!-- Tilføj eventuelt en navigationsmenu her -->
+        <nav class="flex justify-between items-center py-8 px-6 bg-gray-800 text-gray-100">
+          <ul class="flex">
+            <li><a href="index.html" class="py-2 px-4 text-gray-300 hover:text-white">Home</a></li>
+            <li><a href="order.html" class="py-2 px-4 text-gray-300 hover:text-white">Order</a></li>
+            <li><a href="portfolio.html" class="py-2 px-4 text-gray-300 hover:text-white">Portfolio</a></li>
+            <li><a href="feedback.html" class="py-2 px-4 text-gray-300 hover:text-white">Reviews</a></li>
+            <li><a href="https://discord.gg/27awBsDa" class="py-2 px-4 text-gray-300 hover:text-white">Discord</a></li>
+          </ul>
+        </nav>
+    </header>
+
+
+    <div class="flex h-screen items-center justify-center">
+        <div class="w-1/3 bg-gray-800 text-gray-100 p-8 rounded-lg py-8">
+          <h1 class="text-2xl font-bold">DriveDesign | Order</h1>
+          <hr class="my-4">
+          <form class="flex flex-col" action="#" method="POST">
+            <label for="username" class="font-medium">Discord Name</label>
+            <input type="text" id="username" name="username" class="py-2 px-4 mb-4 rounded-lg bg-gray-700 text-gray-100" required>
+            <label for="purchase" class="font-medium">Choose Your Product</label>
+            <select id="purchase" name="purchase" class="py-2 px-4 mb-4 rounded-lg bg-gray-700 text-gray-100" required>
+              <option value="Livery [75 Robux]">Livery [75 Robux]</option>
+              <option value="GFX [60 Robux]">GFX [60 Robux]</option>
+              <option value="Logo Or Banners [55 Robux]">Logo Or Banners [55 Robux]</option>
+            </select>
+            <label for="description" class="font-medium">Description</label>
+            <input type="text" id="description" name="description" class="py-2 px-2 mb-4 rounded-lg bg-gray-700 text-gray-100" required>
+            <label for="tos" class="font-medium">Do You Agree To Our ToS?</label>
+            <select id="tos" name="tos" class="py-2 px-4 mb-4 rounded-lg bg-gray-700 text-gray-100" required>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </form>
+          <button class="py-2 px-4 bg-gray-400 text-white font-medium rounded-lg hover:bg-gray-600" onclick="submitOrder()">Submit</button>
+        </div>
+      </div>
+      
+      <script>
+      function submitOrder() {
+        var name = document.getElementById("username").value;
+        var purchase = document.getElementById("purchase").value;
+        var description = document.getElementById("description").value;
+        var tos = document.getElementById("tos").value;
+      
+        var data = {
+          "username": "Order from " + name,
+          "avatar_url": "",
+          "embeds": [
+            {
+              "title": "DriveDesign | Order",
+              "color": 15258703,
+              "fields": [
+                {
+                  "name": "Name",
+                  "value": name
+                },
+                {
+                  "name": "Buy",
+                  "value": purchase
+                },
+                {
+                  "name": "Description",
+                  "value": description
+                },
+                {
+                  "name": "Agree to Terms of Service",
+                  "value": tos
+                }
+              ]
+            }
+          ]
+        };
+      
+        var xhr = new XMLHttpRequest();
+        var url = "https://discord.com/api/webhooks/1114845308002775101/cmqSZqLEJJ1SblguILqy_5FwMonc17JT8cdTmhMYoGv20bFxH-xJVUyvQGBO3oh9QafQ";
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(data));
+  
+    alert("Order sendt!");
+  }
+  </script>
+
+
+
+</body>
+</html>
